@@ -10,10 +10,10 @@ namespace Battleships
         int length;
         bool horizontal;
         char symbol;
-        bool[] hit = new bool[4];
+        public bool[] hit;
         bool sunk = false;
 
-        String shipType;
+        public string shipType;
 
         /**
          * Returns the type of this ship. This method exists only to be overridden, so it doesn't much matter what it returns.
@@ -344,7 +344,6 @@ namespace Battleships
                 }
             }
             this.setSunk(determineIfShipIsSunk());
-
 
             return directHit;
         }

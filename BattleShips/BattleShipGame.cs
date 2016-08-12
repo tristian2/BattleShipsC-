@@ -15,49 +15,19 @@ namespace Battleships
         public void showWindow()
         {
             play();
+            initialiseControls();
             Console.Write(ocean.showBlankBoard());
             Console.Write(ocean.ToString());
-                          
-            fire(1, 1);
+
+            for (var i = 0; i < 10; i++)
+                for (var j = 0; j < 10; j++)
+                    fire(i, j);
+
+
+            Console.Write(ocean.showBlankBoard());
             Console.Write(ocean.ToString());
-            fire(8, 1);
-            Console.Write(ocean.ToString());
-            fire(2, 1);
-            Console.Write(ocean.ToString());
-            fire(3, 5);
-            Console.Write(ocean.ToString());
-            fire(9, 1);
-            Console.Write(ocean.ToString());
-            fire(3, 1);
-            Console.Write(ocean.ToString());
-            fire(4, 1);
-            Console.Write(ocean.ToString());
-            fire(6, 1);
-            Console.Write(ocean.ToString());
-            fire(7, 5);
-            Console.Write(ocean.ToString());
-            fire(9, 3);
-            Console.Write(ocean.ToString());
-            fire(1, 3);
-            Console.Write(ocean.ToString());
-            fire(8, 4);
-            Console.Write(ocean.ToString());
-            fire(2, 6);
-            Console.Write(ocean.ToString());
-            fire(3, 9);
-            Console.Write(ocean.ToString());
-            fire(7, 7);
-            Console.Write(ocean.ToString());
-            fire(6, 6);
-            Console.Write(ocean.ToString());
-            fire(5, 5);
-            Console.Write(ocean.ToString());
-            fire(9, 3);
-            Console.Write(ocean.ToString());
-            fire(9, 4);
-            Console.Write(ocean.ToString());
-            fire(9, 1);
-            Console.Write(ocean.ToString());
+            
+           
         }
 
         /**
@@ -73,6 +43,7 @@ namespace Battleships
             if (hasTurnAlreadyBeenPlayed(row, column))
             {
                 //swing.status.text = "What? You already fired there!"
+                Console.Write("What? You already fired there!");
                 return;
             }
 
@@ -80,6 +51,8 @@ namespace Battleships
             {
                 //swing.status.text = "You Won!"
                 //swing.score.text = "Ultimate Victory! Fleet sunk!"
+                Console.Write("You Won!");
+                Console.Write("Ultimate Victory! Fleet sunk!");
 
                 /*if (JOptionPane.showConfirmDialog(swing.mainPanel,
                         "Well done. Wanna another go?",
@@ -96,16 +69,19 @@ namespace Battleships
                 return;
             }
 
-            //def classType = ocean.ships[row][column].class.toString()
-            /*
-            if (classType != "class Battleships.EmptySea") {
+            Console.Write(ocean.ships[row,column]);
+            Console.Write(ocean.ships[row, column]);
+
+            var classType = ocean.ships[row, column].GetType().Name;
+            
+            if (classType != "EmptySea") {
                 //update window to show the hit!
-                swing.status.text = "You hit a ship!"
-                swing.score.text = ocean.getShipsSunk() + " ships sunk"
+                Console.Write("You hit a ship!");
+                Console.Write(ocean.getShipsSunk() + " ships sunk");
             }
             else {
-                swing.status.text = "Loser! You missed"
-            }*/
+                Console.Write("Loser! You missed");
+            }
         }
 
         /**
@@ -113,7 +89,7 @@ namespace Battleships
         */
         protected void updateShips()
         {
-            //println ocean.toString()
+            Console.Write(ocean.ToString());
             //swing.contents.text = ocean.toString()
         }
 
@@ -144,7 +120,7 @@ namespace Battleships
             ocean = new Ocean();
             ocean.placeAllShipsRandomly();
             //useful for tracing or cheating!
-            //print ocean.ships
+            Console.WriteLine(ocean.ships);
         }
 
         /**

@@ -5,15 +5,15 @@ using System.Text;
 namespace Battleships {
     class Cruiser : Ship
     {
-
+        int length;
         /**
          * Cruiser constructor
          */
-
+        
         public Cruiser()
         {
-            int length = 3;
-            bool[] hit = new bool[length];
+            this.length = 3;
+            hit = new bool[this.length];
         }
         /**
         * override the toString method
@@ -39,7 +39,7 @@ namespace Battleships {
          */        
         public override int getLength()
         {
-            return base.getLength();
+            return this.length;
         }
     }
 

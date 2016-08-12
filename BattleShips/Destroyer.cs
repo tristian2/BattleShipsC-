@@ -3,17 +3,24 @@ using System.Linq;
 using System.Text;
 
 namespace Battleships {
-    class Battleship : Ship
+    class Destroyer : Ship
     {
-
+        int length;
         /**
-         * battleship constructor
+         * Destroyer constructor
          */
-
-        public Battleship()
+        public Destroyer()
         {
-            int length = 4;
-            bool[] hit = new bool[length];
+            this.length = 2;
+            hit = new bool[this.length];
+        }
+        /**
+        * override the toString method
+        * @return String indicating the ship
+        */
+        public override String ToString()
+        {
+            return "D";
         }
 
         /**
@@ -22,7 +29,7 @@ namespace Battleships {
          */
         public override String getShipType()
         {
-            return "BattleShip";
+            return "Destroyer";
          }
 
         /**
@@ -31,7 +38,7 @@ namespace Battleships {
          */
         public override int getLength()
         {
-            return base.getLength();
+            return this.length;
         }
     }
 

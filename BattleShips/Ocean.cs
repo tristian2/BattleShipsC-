@@ -19,8 +19,8 @@ namespace Battleships
 
         //the fleet - declared in this scope so they are available
         Battleship battleship = new Battleship();
-        Destroyer cruiser1 = new Destroyer();
-        Destroyer cruiser2 = new Destroyer();
+        Cruiser cruiser1 = new Cruiser();
+        Cruiser cruiser2 = new Cruiser();
         Destroyer destroyer1 = new Destroyer();
         Destroyer destroyer2 = new Destroyer();
         Destroyer destroyer3 = new Destroyer();
@@ -93,25 +93,21 @@ namespace Battleships
          * Returns the number of ships sunk (in this game).
          * return int the number of ships that have been sunk
          */
-        int getShipsSunk()
+        public int getShipsSunk()
         {
             //TODO
-            int shipsSunk = 1;
-            /*
+            //int shipsSunk = 1;
+            
             ShipComparator shipComparator = new ShipComparator();
-            var uniqueShips = ships.SelectMany(x=>x).ToArray().Distinct();
+            //var uniqueShips = ships.SelectMany(x=>x).ToArray().Distinct();
+            var uniqueShips = ships.Cast<Ship>().ToList();
             int shipsSunk = 0;
 
-            uniqueShips.ToList().ForEach( x => if(x);
+            //uniqueShips.Select(x=>x.symb).Distinct().ForEach( x=> { if (x.isSunk()) { shipsSunk++; } });
+            uniqueShips.Select(x=>x).Distinct().ToList().ForEach( x => { if (x.isSunk()) { shipsSunk++; } });//
 
 
-                it.each {
-                    if (it.isSunk()) ;
-                    {
-                        shipsSunk++;
-                    }
-                }
-            }*/
+
 
             return shipsSunk;
         }
@@ -199,7 +195,7 @@ namespace Battleships
         private bool aRandombool()
         {
             var rnd = new Random();
-            return rnd.NextDouble() >=5;
+            return rnd.NextDouble() >=.5;
         }
 
         /**
@@ -216,46 +212,55 @@ namespace Battleships
 
             foreach (String s in shipTypes)
             {
-                bool horizontal = this.aRandombool();
+                bool horizontal;
                 Console.WriteLine(s);                               
                 //heuristic: position larger ships first
                 switch (s)
                 {
                     case "battleship":
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, battleship.getLength());
                         column = this.aRandomColumn(horizontal, battleship.getLength());
                         battleship.placeShipAt(row, column, horizontal, this);
                         break;
                     case "cruiser":
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, cruiser1.getLength());
                         column = this.aRandomColumn(horizontal, cruiser1.getLength());
                         cruiser1.placeShipAt(row, column, horizontal, this);
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, cruiser2.getLength());
                         column = this.aRandomColumn(horizontal, cruiser2.getLength());
                         cruiser2.placeShipAt(row, column, horizontal, this);
                         break;
                     case "destroyer":
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, destroyer1.getLength());
                         column = this.aRandomColumn(horizontal, destroyer1.getLength());
                         destroyer1.placeShipAt(row, column, horizontal, this);
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, destroyer2.getLength());
                         column = this.aRandomColumn(horizontal, destroyer2.getLength());
                         destroyer2.placeShipAt(row, column, horizontal, this);
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, destroyer3.getLength());
                         column = this.aRandomColumn(horizontal, destroyer3.getLength());
                         destroyer3.placeShipAt(row, column, horizontal, this);
                         break;
                     case "submarine":
-                        horizontal = true;
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, submarine1.getLength());
                         column = this.aRandomColumn(horizontal, submarine1.getLength());
                         submarine1.placeShipAt(row, column, horizontal, this);
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, submarine2.getLength());
                         column = this.aRandomColumn(horizontal, submarine2.getLength());
                         submarine2.placeShipAt(row, column, horizontal, this);
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, submarine3.getLength());
                         column = this.aRandomColumn(horizontal, submarine3.getLength());
                         submarine3.placeShipAt(row, column, horizontal, this);
+                        horizontal = this.aRandombool();
                         row = this.aRandomRow(horizontal, submarine4.getLength());
                         column = this.aRandomColumn(horizontal, submarine4.getLength());
                         submarine4.placeShipAt(row, column, horizontal, this);
